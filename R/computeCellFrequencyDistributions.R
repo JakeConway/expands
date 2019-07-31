@@ -56,7 +56,7 @@ computeCellFrequencyDistributions<-function(dm, max_PM=6, p, min_CF=0.1, ploidy 
   errors=c();
   warnings=c();
   for (k in 1:nrow(dm)){
-    output=try(cellfrequency_pdf(af=dm[k,"AF_Tumor"],cnv=dm[k,"CN_Estimate"], pnb=dm[k,"PN_B"],freq=freq, max_PM=max_PM,ploidy=ploidy),silent=TRUE);
+    output=try(cellfrequency_pdf(af=dm[k,"AF_Tumor"],cnv=dm[k,"CN_Estimate"], pnb=dm[k,"PN_B"],freq=freq, max_PM=max_PM,ploidy=ploidy, enforceCoocurrence = F),silent=TRUE);
     if(class(output)=="try-error"){
       errors=rbind(errors,output);
     }else{
